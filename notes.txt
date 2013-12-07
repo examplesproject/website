@@ -15,3 +15,10 @@ which changes the ./.git/config file
 
 changes remote "origin" url to use ssh alias set in cygwin .ssh/config
 
+creating a new branch:
+created a new branch 'mocha-test'
+git branch mocha-test
+git checkout mocha-test
+git push origin mocha-test
+
+
