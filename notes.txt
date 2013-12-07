@@ -1,0 +1,17 @@
+- sorting out livereload conflict with sublime/grunt-contrib-watch
+you have to disable livereload plugin in sublime (package control - disable plugins) in order for the livereload to work from grunt.
+
+- setting up github repo
+pushing existing repository from command line to github:
+git remote add origin git@github.com:examplesproject/website.git
+git push -u origin master
+
+note.. this is the ssh address for repository (not http)
+
+now:
+git remote set-url origin 'examplesproject-github:examplesproject/website.git'
+
+which changes the ./.git/config file
+
+changes remote "origin" url to use ssh alias set in cygwin .ssh/config
+
