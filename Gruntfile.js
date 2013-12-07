@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 
       main: {
 
-        file: 'app.js',
+        file: 'index.js',
         //watchedFolders: ['modules'],
         options: {
 
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
         files: 'Gruntfile.js'
       },
       main: {
-        files: ['app.js'],
+        files: ['index.js'],
         options: {
           livereload: true
         }
