@@ -13,8 +13,7 @@ module.exports = function(grunt) {
 
       main: {
 
-        file: 'index.js',
-        //watchedFolders: ['modules'],
+        file: 'dist/server/index.js',
         options: {
 
           ignoredFiles: ['node_modules/**', 'Gruntfile.js']
@@ -55,15 +54,33 @@ module.exports = function(grunt) {
       stylus: {
         files: ['stylus/**/*.styl'],
         tasks: 'stylus',
-        options: {
+        /*options: {
           atBegin: true
-        }
+        }*/
       },
       css: {
         files: ['public/css/**/*.css'],
         options: {
           livereload: true
         }
+      },
+      es6: {
+        files: ['lib/es6/**/*.js'],
+        tasks: 'transpile',
+        /*options: {
+          atBegin: true
+        }*/
+      }
+    },
+    transpile: {
+      server: {
+        type: "cjs",
+        files: [{
+          expand: true,
+          cwd: 'lib/es6',
+          src: ['server/*.js'],
+          dest: 'dist/'
+        }]
       }
     }
   });
@@ -72,6 +89,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-es6-module-transpiler');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Default task.
   grunt.registerTask('default', ['concurrent:main']);

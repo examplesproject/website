@@ -2,7 +2,7 @@
   "name": "examplesproject",
   "version": "0.0.1",
   "description": "examplesproject website",
-  "main": "index.js",
+  "main": "dist/server/index.js",
   "dependencies": {
     "express": "~3.4.6",
     "express3-handlebars": "~0.5.0",
@@ -26,6 +26,9 @@
     "karma-requirejs": "~0.2.0",
     "karma-phantomjs-launcher": "~0.1.1",
     "karma": "~0.10.8",
-    "karma-mocha": "~0.1.1"
+    "karma-mocha": "~0.1.1",
+    "grunt-es6-module-transpiler": "~0.5.2",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0"
   }
 }
