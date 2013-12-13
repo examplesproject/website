@@ -1,4 +1,4 @@
-var expect = require('chai').expect;
+var expect = require('expect.js');
 
 var add = require('../app/add');
 
