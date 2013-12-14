@@ -1,6 +1,6 @@
 var expect = require('expect.js');
 
-var add = require('../app/add');
+var add = require('../dist/server/add');
 
 describe('add', function() {
   it('should expose a function', function() {

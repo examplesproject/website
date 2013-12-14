@@ -12,11 +12,9 @@ module.exports = function(grunt) {
     nodemon: {
 
       main: {
-
         file: 'dist/server/index.js',
         options: {
-
-          ignoredFiles: ['node_modules/**', 'Gruntfile.js']
+          ignoredFiles: ['node_modules/**']
         }
       }
     },
@@ -35,9 +33,6 @@ module.exports = function(grunt) {
       options: {
 
         interval: 3000
-      },
-      gruntfile: {
-        files: 'Gruntfile.js'
       },
       main: {
         files: ['tmp/index.js'],
@@ -65,7 +60,7 @@ module.exports = function(grunt) {
         }
       },
       es6: {
-        files: ['lib/es6/**/*.js'],
+        files: ['js/es6/**/*.js'],
         tasks: 'transpile'
       },
       requirejs: {
@@ -78,7 +73,7 @@ module.exports = function(grunt) {
         type: "cjs",
         files: [{
           expand: true,
-          cwd: 'lib/es6/',
+          cwd: 'js/es6/',
           src: ['server/**/*.js'],
           dest: 'dist/'
         }]
@@ -87,7 +82,7 @@ module.exports = function(grunt) {
         type: "amd",
         files: [{
           expand: true,
-          cwd: 'lib/es6/client/',
+          cwd: 'js/es6/client/',
           src: '**/*.js',
           dest: 'tmp/'
         }]
