@@ -14,17 +14,8 @@ module.exports = function(grunt) {
       main: {
         file: 'dist/server/index.js',
         options: {
-          ignoredFiles: ['node_modules/**']
-        }
-      }
-    },
-    stylus: {
-      compile: {
-        files: {
-          'public/css/main.css': ['stylus/**/*.styl']
-        },
-        options: {
-          compress: false
+          watchedFolders: ['dist/server'],
+          watchedExtensions: ['js']
         }
       }
     },
@@ -59,13 +50,27 @@ module.exports = function(grunt) {
           livereload: true
         }
       },
-      es6: {
-        files: ['js/es6/**/*.js'],
-        tasks: 'transpile'
+      es6_server: {
+          files: ['js/es6/server/**/*.js'],
+          tasks: 'transpile:server'
+      },
+      es6_client: {
+        files: ['js/es6/client/**/*.js'],
+        tasks: 'transpile:client'
       },
       requirejs: {
         files: ['tmp/**/*.js'],
         tasks: 'requirejs'
+      }
+    },
+    stylus: {
+      compile: {
+        files: {
+          'public/css/main.css': ['stylus/**/*.styl']
+        },
+        options: {
+          compress: false
+        }
       }
     },
     transpile: {

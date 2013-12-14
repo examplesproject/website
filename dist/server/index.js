@@ -6,9 +6,9 @@ var questions = require("./questions")["default"];
 var server = require("./server")["default"];
 
 
-// greetings.night();
-// questions.color();
-// questions.hobby();
+greetings.night();
+questions.color();
+questions.hobby();
 // greetings.morning();
 
 server();

@@ -1,10 +1,7 @@
 body {
   font-family: arial;
   font-size: 18px;
-  background-color: #ccc;
 }
 .container {
-  background-color: #fff;
   padding: 10px;
-  height: 500px;
 }
