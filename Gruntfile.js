@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         files: 'Gruntfile.js'
       },
       main: {
-        files: ['index.js'],
+        files: ['tmp/index.js'],
         options: {
           livereload: true
         }
@@ -66,10 +66,11 @@ module.exports = function(grunt) {
       },
       es6: {
         files: ['lib/es6/**/*.js'],
-        tasks: 'transpile',
-        /*options: {
-          atBegin: true
-        }*/
+        tasks: 'transpile'
+      },
+      requirejs: {
+        files: ['tmp/**/*.js'],
+        tasks: 'requirejs'
       }
     },
     transpile: {
@@ -77,10 +78,31 @@ module.exports = function(grunt) {
         type: "cjs",
         files: [{
           expand: true,
-          cwd: 'lib/es6',
-          src: ['server/*.js'],
+          cwd: 'lib/es6/',
+          src: ['server/**/*.js'],
           dest: 'dist/'
         }]
+      },
+      client: {
+        type: "amd",
+        files: [{
+          expand: true,
+          cwd: 'lib/es6/client/',
+          src: '**/*.js',
+          dest: 'tmp/'
+        }]
+      }
+    },
+    requirejs: {
+      compile: {
+        options: {
+          baseUrl: 'tmp',
+          optimize: 'uglify2',
+          name: '../public/js/ext/almond/0.2.6/almond',
+          include: 'index',
+          out: 'public/js/index.js',
+          insertRequire: ['index']
+        }
       }
     }
   });
@@ -92,6 +114,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-es6-module-transpiler');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
 
   // Default task.
   grunt.registerTask('default', ['concurrent:main']);
